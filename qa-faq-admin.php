@@ -13,10 +13,14 @@
 					return 'faq';
 				case 'faq_page_title':
 					return 'Frequently-asked Questions';
+				case 'faq_page_slug':
+					return 'FAQ';
 				case 'faq_pre_html':
 					return '';
 				case 'faq_post_html':
 					return '';
+				case 'faq_notify_text':
+					return 'First time here?  Checkout the ^faq!';
 				case 'faq_css':
 					return '.notify-container {
 	left: 0;
@@ -108,10 +112,12 @@
 
                 qa_opt('faq_page_url',qa_post_text('faq_page_url'));
                 qa_opt('faq_page_title',qa_post_text('faq_page_title'));
+                qa_opt('faq_page_slug',qa_post_text('faq_page_slug'));
                 qa_opt('faq_pre_html',qa_post_text('faq_pre_html'));
                 qa_opt('faq_post_html',qa_post_text('faq_post_html'));
                 
                 qa_opt('faq_notify_show',qa_post_text('faq_notify_show'));
+                qa_opt('faq_notify_text',qa_post_text('faq_notify_text'));
                 
                 $idx = 0;
                 while($idx <= (int)qa_post_text('faq_section_number')) {
@@ -157,10 +163,18 @@
 				'value' => qa_opt('faq_page_url'),
                 'note' => '(set this in admin/pages as well!)',
 			);
+			
             $fields[] = array(
                 'label' => 'FAQ page title',
                 'tags' => 'NAME="faq_page_title"',
                 'value' => qa_opt('faq_page_title'),
+            );
+            
+            $fields[] = array(
+                'label' => 'FAQ page slug',
+                'tags' => 'NAME="faq_page_slug"',
+                'value' => qa_opt('faq_page_slug'),
+                'note' => 'short title used in notification',
             );
             $fields[] = array(
                 'label' => 'FAQ page pre html',
@@ -187,7 +201,14 @@
 				'value' => qa_opt('faq_notify_show'),
 				'type' => 'checkbox',
 			);
-
+			
+            $fields[] = array(
+                'label' => 'Notification text for new visitors',
+                'tags' => 'NAME="faq_notify_text"',
+                'value' => qa_opt('faq_notify_text'),
+                'note' => '^faq is substituted by the faq url ('.'<a href="'.qa_path_html(qa_opt('faq_page_url')).'">'.qa_opt('faq_page_slug').'</a>'.')',
+           );
+            
 			$fields[] = array(
 				'type' => 'blank',
 			);
