@@ -10,10 +10,13 @@ This is a plugin for **Question2Answer** that provides a customizable FAQ page.
 Features
 --------
 
-- adds FAQ page via admin/pages
+- add FAQ page via admin/pages
 - edit FAQ sections via admin/plugins
 - add FAQ sections via admin/plugins using jQuery
+- add points-per-activity and priviliges-by-points tables using short-code
 - show/hide FAQ sections on FAQ page using jQuery
+- notify new users to checkout the FAQ
+- all text and css customizable via admin/plugins
 
 ------------
 Installation

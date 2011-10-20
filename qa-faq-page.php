@@ -59,11 +59,11 @@
 		{
 			$qa_content=qa_content_prepare();
 
-			$qa_content['head_lines'][]='<script>'.qa_opt('faq_css').'</script>';
+			$qa_content['head_lines'][]='<style>'.qa_opt('faq_css').'</style>';
 
 			$qa_content['title']=qa_opt('faq_page_title');
 
-			$qa_content['custom']=qa_opt('faq_pre_html');
+			$qa_content['custom_0']=$this->filter_subs(qa_opt('faq_pre_html'));
 			
 			$idx = 0;
 			while(qa_opt('faq_section_'.$idx)) {
@@ -75,7 +75,7 @@
 				$idx++;
 			}
 
-			$qa_content['custom']=qa_opt('faq_post_html');
+			$qa_content['custom_'.$idx]=$this->filter_subs(qa_opt('faq_post_html'));
 
 			return $qa_content;
 		}
