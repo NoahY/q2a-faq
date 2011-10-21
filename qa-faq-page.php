@@ -124,7 +124,6 @@
 					switch ($optionname) {
 						case 'points_multiple':
 							$prefix='&#215;';
-							unset($optionfield['note']);
 							break;
 							
 						case 'points_per_q_voted':

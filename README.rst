@@ -11,10 +11,10 @@ Features
 --------
 
 - add FAQ page via admin/pages
-- edit FAQ sections via admin/plugins
-- add FAQ sections via admin/plugins using jQuery
-- add points-per-activity and priviliges-by-points tables using short-code
 - show/hide FAQ sections on FAQ page using jQuery
+- add points-per-activity and priviliges-by-points tables to faq via admin/plugins using short-code
+- edit FAQ sections via admin/plugins
+- add FAQ sections and move sections up and down via admin/plugins using jQuery
 - notify new users to checkout the FAQ
 - all text and css customizable via admin/plugins
 
