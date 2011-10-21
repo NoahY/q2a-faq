@@ -67,15 +67,15 @@
 			case 'faq_section_0_title':
 				return 'What kinds of questions can I ask here? ';
 			case 'faq_section_0':
-				return 'Most importantly - questions should be <strong>relevant to this community</strong>.  Before you ask - please make sure to search for a similar question. You can search questions by their title or tags.';
+				return 'Most importantly, questions should be <strong>relevant to our community</strong>.  Before you ask, please make sure to search for a similar question. You can search for questions by their title or tags.';
 			case 'faq_section_1_title':
 				return 'What kinds of questions should be avoided? ';
 			case 'faq_section_1':
-				return 'Please avoid asking questions that are not relevant to this community, too subjective and argumentative.';
+				return 'Please avoid asking questions that are not related to our community, too subjective or argumentative.';
 			case 'faq_section_2_title':
 				return 'What should I avoid in my answers? ';
 			case 'faq_section_2':
-				return '^site_title is a <strong>question and answer</strong> site - it is <strong>not</strong> a discussion group. Please avoid holding debates in your answers as they tend to dilute the essence of questions and answers. For brief discussions please use commenting facility. ';
+				return '^site_title is a <strong>question and answer</strong> site - it is <strong>not</strong> a discussion group. Please avoid holding debates in your answers as they tend to dilute the quality of  the forum. <br/><br/>For brief discussion, or to thank someone for their answer, please post comments, not answers.';
 			case 'faq_section_3_title':
 				return 'Who moderates this community? ';
 			case 'faq_section_3':
@@ -83,15 +83,15 @@
 			case 'faq_section_4_title':
 				return 'How does point system work? ';
 			case 'faq_section_4':
-				return 'When a question or answer is upvoted, the user who posted them will gain some points. These points serve as a rough measure of the community trust to him/her. Various moderation tasks are gradually assigned to the users based on those points. <br/><br/>For example, if you ask an interesting question, your input will be upvoted. On the other hand if the answer is misleading - it will be downvoted. Each vote in favor will generate <strong>^qa_opt(points_per_q_voted) points</strong>, each vote against will subtract <strong>^qa_opt(points_per_q_voted) points</strong>. The following table lists points gained per activity:<br/><br/>^pointstable<br/><br/>The following table lists point requirements for each type of moderation task. <br/><br/>^privilegestable';
+				return 'When a question or answer is voted up, the user who posted it will gain points. These points serve as a rough measure of the community trust in that person. Various moderation tasks are gradually assigned to the users based on those points. <br/><br/>For example, if you ask an interesting question or useful answer, it  will likely be voted up. On the other hand if the question is poorly-worded or the answer is misleading - it will likely be voted down. Each up vote on a question will generate <strong>^qa_opt(points_per_q_voted) points</strong>, whereas each vote against will subtract <strong>^qa_opt(points_per_q_voted) points</strong>. The following table lists points gained per activity:<br/><br/>^pointstable<br/><br/>The following table lists point requirements for each type of moderation task. <br/><br/>^privilegestable';
 			case 'faq_section_5_title':
 				return 'How to change my picture (gravatar), and what is gravatar? ';
 			case 'faq_section_5':
-				return 'The picture that appears on the users profiles is called <strong>gravatar</strong> (which means <strong>globally recognized avatar</strong>).<br/><br/>Here is how it works: a <strong>cryptographic key</strong> (unbreakable code) is calculated from your email address. You upload your picture (or your favorite alter ego image) the website <a href="http://gravatar.com"><strong>gravatar.com</strong></a> from where we later retreive your image using the key.<br/><br/>This way all the websites you trust can show your image next to your posts and your email address remains private.<br/><br/>Please <strong>personalize your account with an image</strong> - just register at <a href="http://gravatar.com"><strong>gravatar.com</strong></a> (just please be sure to use the same email address that you used to register with us). Default grey image is generated automatically. ';
+				return 'The picture that appears in user profiles is called a <strong>gravatar</strong>, which means <strong>globally recognized avatar</strong>.<br/><br/>Here is how it works: You upload your picture (or your favorite alter ego image) to the website <a href="http://gravatar.com"><strong>gravatar.com</strong></a> from where we later retrieve your image using a cryptographic key based on your email address.<br/><br/>This way all the websites you trust can show your image next to your posts and your email address remains private.<br/><br/>Please <strong>personalize your account with an image</strong> - just register at <a href="http://gravatar.com"><strong>gravatar.com</strong></a> (just please be sure to use the same email address that you used to register with us). The default gray image is generated automatically.';
 			case 'faq_section_6_title':
 				return 'Still have questions? ';
 			case 'faq_section_6':
-				return 'Please <a href="^qa_path(ask)">ask your question</a>, help make our community better! ';
+				return 'Please <a href="^qa_path(ask)">ask your question</a> and help make our community better! ';
 			default:
 				return null;
 			}
@@ -200,11 +200,13 @@
 				'label' => 'FAQ page pre html',
 				'tags' => 'NAME="faq_pre_html"',
 				'value' => qa_html(qa_opt('faq_pre_html')),
+				'note' => 'filters allowed as for sections (below)',
 			);
 			$fields[] = array(
 				'label' => 'FAQ page post html',
 				'tags' => 'NAME="faq_post_html"',
 				'value' => qa_html(qa_opt('faq_post_html')),
+				'note' => 'filters allowed as for sections (below)',
 			);
 			
 			$fields[] = array(
@@ -226,7 +228,7 @@
 				'label' => 'Notification text for new visitors',
 				'tags' => 'NAME="faq_notify_text"',
 				'value' => qa_html(qa_opt('faq_notify_text')),
-				'note' => '^faq is substituted by the faq url ('.'<a href="'.qa_path_html(qa_opt('faq_page_url')).'">'.qa_opt('faq_page_slug').'</a>'.')',
+				'note' => '^faq is substituted by a link to the faq page, displaying the FAQ slug set above: '.'<a href="'.qa_path_html(qa_opt('faq_page_url')).'">'.qa_opt('faq_page_slug').'</a>',
 			);
 			
 			$fields[] = array(
