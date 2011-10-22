@@ -107,6 +107,45 @@
 				$text = str_replace($match[0],qa_opt($match[1]),$text);
 			}
 			
+			// if subs
+			
+			if(qa_get_logged_in_user()) {
+				
+				$text = preg_replace('/\^if_logged_in=`([^`]+)`/','$1',$text);
+				$text = preg_replace('/\^if_not_logged_in=`[^`]+`/','',$text);
+				
+				$handle = qa_get_logged_in_handle();
+				
+				$subs = array(
+					'profile_url' => qa_path('user/'.$handle),
+					'handle' => $handle,
+				);
+				
+				foreach($subs as $i => $v) {
+					$text = str_replace('^'.$i,$v,$text);
+				}
+				
+				
+			}
+			else {
+				
+				global $qa_root_url_relative;
+				
+				$userlinks=qa_get_login_links($qa_root_url_relative,null);
+				
+				$subs = array(
+					'login' => $userlinks['login'],
+					'register' => $userlinks['register'],
+				);				
+				
+				foreach($subs as $i => $v) {
+					$text = str_replace('^'.$i,$v,$text);
+				}				
+				
+				$text = preg_replace('/\^if_not_logged_in=`([^`]+)`/','$1',$text);
+				$text = preg_replace('/\^if_logged_in=`[^`]+`/','',$text);
+			}
+			
 			// table subs
 			
 			if(strpos($text,'^pointstable') !== false) {
@@ -119,12 +158,12 @@
 				$table = '
 <table class="qa-form-wide-table">
 	<tbody>';
+				$multi = (int)$options['points_multiple'];
 				foreach ($optionnames as $optionname) {
 					
 					switch ($optionname) {
 						case 'points_multiple':
-							$prefix='&#215;';
-							break;
+							continue 2;
 							
 						case 'points_per_q_voted':
 						case 'points_per_a_voted':
@@ -150,6 +189,8 @@
 							break;
 					}
 					
+					$points = $optionname != 'points_base' ? (int)$options[$optionname]*$multi : (int)$options[$optionname];
+					
 					$table .= '
 		<tr>
 			<td class="qa-form-wide-label">
@@ -157,7 +198,7 @@
 			</td>
 			<td class="qa-form-wide-data" style="text-align:right">
 				<span class="qa-form-wide-prefix"><span style="width: 1em; display: -moz-inline-stack;">'.$prefix.'</span></span>
-				'.qa_html($options[$optionname]).($optionname=='points_multiple'?'':'
+				'.qa_html($points).($optionname=='points_multiple'?'':'
 				<span class="qa-form-wide-note">'.qa_lang_html('admin/points').'</span>').'
 			</td>
 		</tr>';
