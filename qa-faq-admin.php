@@ -17,10 +17,12 @@
 				return 'Frequently-asked Questions';
 			case 'faq_page_slug':
 				return 'FAQ';
+			case 'faq_list_type':
+				return false;
 			case 'faq_pre_html':
 				return 'The following is basic information about our forum.  Please read this before posting questions or answers if you are unfamiliar with this sort of forum.  Click on any question to show or hide the answer.';
 			case 'faq_post_html':
-				return '<br/><br/>If there is anything lacking, please use the <a href="^qa_path(feedback)">feedback form</a>.';
+				return '<br/>If there is anything lacking, please use the <a href="^qa_path(feedback)">feedback form</a>.';
 			case 'faq_notify_text':
 				return 'First time here?  Checkout the ^faq!';
 			case 'faq_css':
@@ -56,7 +58,7 @@
 	top: 8px;
 }
 .qa-faq-section-title {
-	font-size:150%;
+	font-size:125%;
 	font-weight:bold;
 	margin:10px 0 5px;
 	cursor:pointer;
@@ -137,7 +139,9 @@
 				qa_opt('faq_pre_html',qa_post_text('faq_pre_html'));
 				qa_opt('faq_post_html',qa_post_text('faq_post_html'));
 				
-				qa_opt('faq_notify_show',qa_post_text('faq_notify_show'));
+				qa_opt('faq_list_type',(bool)qa_post_text('faq_list_type'));
+				
+				qa_opt('faq_notify_show',(bool)qa_post_text('faq_notify_show'));
 				qa_opt('faq_notify_text',qa_post_text('faq_notify_text'));
 				
 				$idx = 0;
@@ -209,6 +213,14 @@
 				'value' => qa_html(qa_opt('faq_post_html')),
 				'note' => 'filters allowed as for sections (below)',
 			);
+
+			$fields[] = array(
+				'label' => 'Use ordered list (default is unordered)',
+				'tags' => 'NAME="faq_list_type"',
+				'value' => qa_opt('faq_list_type'),
+				'type' => 'checkbox',
+			);
+				
 			
 			$fields[] = array(
 				'label' => 'FAQ custom css',
@@ -216,6 +228,9 @@
 				'value' => qa_opt('faq_css'),
 				'type' => 'textarea',
 				'rows' => 20
+			);
+			$fields[] = array(
+				'type' => 'blank',
 			);
 
 			$fields[] = array(
@@ -250,8 +265,7 @@
 	^qa_path(url) - the relative path for given url<br/>
 	^qa_opt(option) - any q2a option that exists in the database<br/>
 	^pointstable - a preformatted table of points awarded by activity<br/>
-	^privilegestable - a preformatted table of points required for each privilege<br/>
-	'
+	^privilegestable - a preformatted table of points required for each privilege'
 			);
 			
 			$sections = '<div id="qa-faq-sections">';
