@@ -146,7 +146,6 @@
 				
 				$idx = 0;
 				while($idx <= (int)qa_post_text('faq_section_number')) {
-					error_log(qa_post_text('faq_section_'.$idx));
 					qa_opt('faq_section_'.$idx,qa_post_text('faq_section_'.$idx));
 					qa_opt('faq_section_'.$idx.'_title',qa_post_text('faq_section_'.$idx.'_title'));
 					$idx++;
