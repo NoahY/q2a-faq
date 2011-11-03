@@ -114,7 +114,7 @@
 			
 			// if subs
 			
-			if(qa_get_logged_in_user()) {
+			if(qa_get_logged_in_userid()) {
 				
 				$text = preg_replace('/\^if_logged_in=`([^`]+)`/','$1',$text);
 				$text = preg_replace('/\^if_not_logged_in=`[^`]+`/','',$text);
