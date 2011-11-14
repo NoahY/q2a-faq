@@ -21,6 +21,7 @@
 				setcookie('qa_faq_noshow','true',time()+86400*365, '/', QA_COOKIE_DOMAIN);
 				$this->faq_notify();
 			}
+			qa_html_theme_base::body_prefix();
 		}
 
 
