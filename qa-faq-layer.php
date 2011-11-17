@@ -18,7 +18,7 @@
 		function body_prefix()
 		{
 			if (!qa_get_logged_in_userid() && !@$_COOKIE['qa_faq_noshow'] && qa_opt('faq_notify_show')) {
-				setcookie('qa_faq_noshow','true',time()+86400*365, '/', QA_COOKIE_DOMAIN);
+				setcookie('qa_faq_noshow','true',0, '/', QA_COOKIE_DOMAIN);
 				$this->faq_notify();
 			}
 			qa_html_theme_base::body_prefix();
