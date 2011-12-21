@@ -237,11 +237,16 @@
 	<table class="qa-form-wide-table">
 		<tbody>';
 					foreach ($popts as $key => $val) {
+
+						if ($key=='permit_retag_cat')
+							$name=qa_lang_html(qa_using_categories() ? 'profile/permit_recat' : 'profile/permit_retag');
+						else 
+							$name = qa_lang('profile/'.$key);
 						
 						$table .= '
 			<tr>
 				<td class="qa-form-wide-label">
-					'.qa_lang_html('profile/'.$key).'
+					'.$name.'
 				</td>
 				<td class="qa-form-wide-data" style="text-align:right">
 					'.qa_html($val).'
