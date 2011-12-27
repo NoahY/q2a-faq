@@ -1,16 +1,6 @@
 <?php
 
 /*
-	Question2Answer 1.4.2 (c) 2011, Gideon Greenspan
-
-	http://www.question2answer.org/
-
-	
-	File: qa-plugin/example-page/qa-example-page.php
-	Version: 1.4.2
-	Date: 2011-09-12 10:46:08 GMT
-	Description: Page module class for example page plugin
-
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
