@@ -228,10 +228,21 @@
 		<tbody>';
 					foreach ($popts as $key => $val) {
 
+						// fudge
 						if ($key=='permit_retag_cat')
 							$name=qa_lang_html(qa_using_categories() ? 'profile/permit_recat' : 'profile/permit_retag');
 						else 
 							$name = qa_lang('profile/'.$key);
+							
+						if($name == '[profile/'.$key.']') {
+							global $qa_lang_file_pattern;
+							foreach($qa_lang_file_pattern as $k => $v)	{
+								if(qa_lang($k.'/'.$key) != '['.$k.'/'.$key.']') {
+									$name = qa_lang($k.'/'.$key);
+									break;
+								}
+							}
+						}	
 						
 						$table .= '
 			<tr>
