@@ -86,7 +86,7 @@
 			case 'faq_section_4_title':
 				return 'How does point system work? ';
 			case 'faq_section_4':
-				return 'When a question or answer is voted up, the user who posted it will gain points. These points serve as a rough measure of the community trust in that person. Various moderation tasks are gradually assigned to the users based on those points. <br/><br/>For example, if you ask an interesting question or useful answer, it  will likely be voted up. On the other hand if the question is poorly-worded or the answer is misleading - it will likely be voted down. Each up vote on a question will generate <strong>^qa_opt(points_per_q_voted) points</strong>, whereas each vote against will subtract <strong>^qa_opt(points_per_q_voted) points</strong>. The following table lists points gained per activity:<br/><br/>^pointstable<br/><br/>The following table lists point requirements for each type of moderation task. <br/><br/>^privilegestable';
+				return 'When a question or answer is voted up, the user who posted it will gain points. These points serve as a rough measure of the community trust in that person. Various moderation tasks are gradually assigned to the users based on those points. <br/><br/>For example, if you ask an interesting question or useful answer, it  will likely be voted up. On the other hand if the question is poorly-worded or the answer is misleading - it will likely be voted down. Each up vote on a question will generate <strong>^qa_opt(points_per_q_voted_up) points</strong>, whereas each vote against will subtract <strong>^qa_opt(points_per_q_voted_down) points</strong>. The following table lists points gained per activity:<br/><br/>^pointstable<br/><br/>The following table lists point requirements for each type of moderation task. <br/><br/>^privilegestable';
 			case 'faq_section_5_title':
 				return 'How to change my picture (gravatar), and what is gravatar? ';
 			case 'faq_section_5':
@@ -145,7 +145,7 @@
 				qa_opt('faq_notify_text',qa_post_text('faq_notify_text'));
 				
 				$idx = 0;
-				while($idx <= (int)qa_post_text('faq_section_number')) {
+				while($idx < (int)qa_post_text('faq_section_number')) {
 					qa_opt('faq_section_'.$idx,qa_post_text('faq_section_'.$idx));
 					qa_opt('faq_section_'.$idx.'_title',qa_post_text('faq_section_'.$idx.'_title'));
 					$idx++;
@@ -160,7 +160,7 @@
 				}
 					
 				$idx = 0;
-				while($idx <= (int)qa_post_text('faq_section_number')) {
+				while($idx < (int)qa_post_text('faq_section_number')) {
 					qa_opt('faq_section_'.$idx,$this->option_default('faq_section_'.$idx)?$this->option_default('faq_section_'.$idx):'');
 					qa_opt('faq_section_'.$idx.'_title',$this->option_default('faq_section_'.$idx.'_title')?$this->option_default('faq_section_'.$idx.'_title'):'');
 					$idx++;
@@ -308,8 +308,8 @@
 		jQuery("#qa-faq-sections").append(\'<table id="qa-faq-section-table-\'+next_faq_section+\'" width="100%"><tr><td width="30"><input type="button" id="faq-up-button-\'+next_faq_section+\'" value="-" style="width:30px" title="move section up" onclick="moveFaqSection(\'+next_faq_section+\',\'+(next_faq_section-1)+\')"\'+(next_faq_section==0?\' disabled\':\'\')+\'><br/><br/><input type="button" id="faq-down-button-\'+next_faq_section+\'" value="+" style="width:30px" title="move section down" onclick="moveFaqSection(\'+next_faq_section+\',\'+(next_faq_section+1)+\')" disabled></td><td>Faq section \'+(next_faq_section+1)+\' title<br/><input type="text" id="faq_section_\'+next_faq_section+\'_title" name="faq_section_\'+next_faq_section+\'_title"><br/><br/>Faq section \'+(next_faq_section+1)+\' content<br/><textarea class="qa-form-tall-text" rows="10" id="faq_section_\'+next_faq_section+\'" name="faq_section_\'+next_faq_section+\'"></textarea></td></tr></table><hr/>\');
 		
 		jQuery("#faq-down-button-"+(next_faq_section-1)).removeAttr("disabled");
-		
 		next_faq_section++;
+		jQuery("input[name=faq_section_number]").val(next_faq_section);
 	}
 </script>
 <input type="button" value="add section" onclick="addFaqSection()">'
