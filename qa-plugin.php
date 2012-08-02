@@ -5,7 +5,7 @@
 	Plugin URI: https://github.com/NoahY/q2a-faq
 	Plugin Update Check URI: https://github.com/NoahY/q2a-faq/raw/master/qa-plugin.php
 	Plugin Description: Adds custom faq page
-	Plugin Version: 0.1
+	Plugin Version: 0.2
 	Plugin Date: 2011-10-20
 	Plugin Author: NoahY
 	Plugin Author URI: http://www.question2answer.org/

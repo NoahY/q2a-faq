@@ -57,7 +57,7 @@
 			
 			$idx = 0;
 
-			$qa_content['custom_'.(++$idx)]='<'.(qa_opt('faq_list_type')?'o':'u').'l class="qa-faq-list">';
+			$qa_content['custom_1']='<'.(qa_opt('faq_list_type')?'o':'u').'l class="qa-faq-list">';
 
 			while(qa_opt('faq_section_'.$idx)) {
 				$title = $this->filter_subs(qa_opt('faq_section_'.$idx.'_title'));
@@ -70,7 +70,7 @@
 
 			$qa_content['custom_'.(++$idx)]='</'.(qa_opt('faq_list_type')?'o':'u').'l>';
 
-			$qa_content['custom_'.$idx]=$this->filter_subs(qa_opt('faq_post_html'));
+			$qa_content['custom_'.++$idx]=$this->filter_subs(qa_opt('faq_post_html'));
 
 			return $qa_content;
 		}
