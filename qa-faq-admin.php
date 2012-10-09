@@ -281,7 +281,7 @@
 		</td>
 		<td>
 			<b>Faq section '.($idx+1).' title:</b><br/>
-			<input class="qa-form-tall-text" type="text" value="'.qa_opt('faq_section_'.$idx.'_title').'" id="faq_section_'.$idx.'_title" name="faq_section_'.$idx.'_title"><br/><br/>
+			<input class="qa-form-tall-text" type="text" value="'.qa_html(qa_opt('faq_section_'.$idx.'_title')).'" id="faq_section_'.$idx.'_title" name="faq_section_'.$idx.'_title"><br/><br/>
 			<b>Faq section '.($idx+1).' content:</b><br/>
 			<textarea class="qa-form-tall-text" rows="10" id="faq_section_'.$idx.'" name="faq_section_'.$idx.'">'.qa_html(qa_opt('faq_section_'.$idx)).'</textarea>
 		</td>
