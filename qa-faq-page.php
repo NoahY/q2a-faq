@@ -200,17 +200,19 @@
 					
 					$points = $optionname != 'points_base' ? (int)$options[$optionname]*$multi : (int)$options[$optionname];
 					
-					$table .= '
-		<tr>
-			<td class="qa-form-wide-label">
-				'.qa_lang_html('options/'.$optionname).'
-			</td>
-			<td class="qa-form-wide-data" style="text-align:right">
-				<span class="qa-form-wide-prefix"><span style="width: 1em; display: -moz-inline-stack;">'.$prefix.'</span></span>
-				'.qa_html($points).($optionname=='points_multiple'?'':'
-				<span class="qa-form-wide-note">'.qa_lang_html('admin/points').'</span>').'
-			</td>
-		</tr>';
+					if ($points>0) {
+						$table .= '
+			<tr>
+				<td class="qa-form-wide-label">
+					'.qa_lang_html('options/'.$optionname).'
+				</td>
+				<td class="qa-form-wide-data" style="text-align:right">
+					<span class="qa-form-wide-prefix"><span style="width: 1em; display: -moz-inline-stack;">'.$prefix.'</span></span>
+					'.qa_html($points).($optionname=='points_multiple'?'':'
+					<span class="qa-form-wide-note">'.qa_lang_html('admin/points').'</span>').'
+				</td>
+			</tr>';
+					}
 				}
 				
 				$table .= '
