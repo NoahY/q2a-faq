@@ -36,7 +36,7 @@
 			
 			$text = str_replace('^faq','<a href="'.qa_path_html(qa_opt('faq_page_url')).'">'.qa_opt('faq_page_slug').'</a>',qa_opt('faq_notify_text'));
 
-			$notice .= '<div class="notify">'.$text.'<div class="notify-close" onclick="jQuery(this).parent().hide(\'slow\')">x</div></div>';
+			$notice .= '<div class="notify">'.$text.'<div class="notify-close" onclick="jQuery(this).parent().slideUp(\'fast\')">x</div></div>';
 			
 			$notice .= '</div>';
 			$this->output($notice);

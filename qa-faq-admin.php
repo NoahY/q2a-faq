@@ -14,7 +14,7 @@
 			case 'faq_page_url':
 				return 'faq';
 			case 'faq_page_title':
-				return 'Frequently-asked Questions';
+				return 'Frequently Asked Questions';
 			case 'faq_page_slug':
 				return 'FAQ';
 			case 'faq_list_type':
