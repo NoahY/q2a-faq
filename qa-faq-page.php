@@ -230,7 +230,7 @@
 				$options = qa_get_permit_options();
 				
 				foreach ($options as $option) {
-					if(qa_opt($option) == QA_PERMIT_POINTS) {
+					if(qa_opt($option) == QA_PERMIT_POINTS or qa_opt($option) == QA_PERMIT_POINTS_CONFIRMED or qa_opt($option) == QA_PERMIT_APPROVED_POINTS) {
 						$popts[$option] = (int)qa_opt($option.'_points');
 					}
 				}
